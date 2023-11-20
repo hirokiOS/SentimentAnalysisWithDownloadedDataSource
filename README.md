@@ -13,10 +13,10 @@ The notebook is modifed based on the contents of book chapter 5 of the following
 Feel free to contact me via E-mail to my affiliation E-mail, or hirokifujii10@gmail.com
 
 # 各ファイルの説明
-次の３つのファイルは、上記の参考文献第五章、1-3節をベースとして開発されています。
+次の３つのファイルは、上記の参考文献の書籍第5章、1-3節をベースとして開発されています。
 Google Colab上での運用を想定していますが、ローカルでの運用の場合には、コード中でGoogle driveを指定している箇所について、それぞれ適切なパスの指定をお願い致します。
 スクリプトのベースは東北大学のモデルとWrimeデータセットをベースに書かれていましたが、
-以下ではAccernデータセットでの活用にフォーカスします。API,URL情報を入力して、一度通して実行してみてください。
+以下ではAccernデータセットでの活用にフォーカスします。API,URL情報を入力して、通して実行して理解を深めてみてください。
 
 ### 1_original_accern_parse.ipynb
 APIを経由したダウンロードと、データをファインチューニング用に加工した状態でのGoogle driveへの保存に対応しています。
@@ -27,12 +27,13 @@ Event_sentimentをベースとしたNeutral/Negative/Positiveの決定には, �
 
 ### 2-sentiment-analysis-finetunign-finbert.ipynb
 APIを経由してダウンロードしたデータセットでprosusAI/finbertのモデルをファインチューンします。
+ProsusAI/finbertの、Positive/Neutral/Negativeの感情分析結果が、利用したデータソースにおける感情を正解ラベルとし、これに近づくようにファインチューニングが行われます。
 
 PrususAI/Finbert : https://huggingface.co/ProsusAI/finbert
 
 
 ### 3-sentiment-error-analysis-finbert.ipynb
-学習したモデルをも用いた混合行列の作成、センチメントの異なるテキストの例示を行います。
+学習したモデルを用いた感情分析の出力と、真のデータセットと比較した混合行列の作成、センチメントの異なるテキストの例示を行います。
 
 # 活用方法
 ## APIの入力
@@ -69,13 +70,13 @@ Google colabでは2023年11月現在ランタイムとしてGPU環境が提供�
 
 
 
-## ユーザー定義モジュールのインポート
-ノートブック中では, 本Githubのソースコードをモジュールとして参照しています。(以下の部分)  
+## ユーザー定義モジュール(acc_function下)のファイルのインポート
+ノートブック中では, 本Githubのソースコードをモジュールとして参照しています。(Notebook 1, 2中の以下の部分)  
 ```
-giturl1 = 'https://raw.githubusercontent.com/hirokiOS/SentimentAnalysisWithDownloadedDataSource/main/acc_function/ACCDFConcatenator.py'
+    giturl1 = 'https://raw.githubusercontent.com/hirokiOS/SentimentAnalysisWithDownloadedDataSource/main/acc_function/ACCDFConcatenator.py'
     giturl2 = 'https://raw.githubusercontent.com/hirokiOS/SentimentAnalysisWithDownloadedDataSource/main/acc_function/ConvertDfToHFData.py'
 ```
 
-Githubページが予告なく削除された場合は、acc_function下の関数をモジュールとしてインストールするか、新たにリンクしていただければと存じます。
+上リンク先のGithubページが予告なく削除された場合は、acc_function下の関数を適切なディレクトリ下に配置してモジュールとしてインストールするか、ご自身でGithubなどにアップロードして新たにリンクしていただければと存じます。
 
 
